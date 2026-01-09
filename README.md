@@ -6,6 +6,8 @@ An agentic debugging + optimization workbench that detects CX degradation early,
 
 **GitHub**: [https://github.com/lokesh75-kank/CX_fulfillment_ML_System.git](https://github.com/lokesh75-kank/CX_fulfillment_ML_System.git)
 
+**🌐 Landing Page**: [View Live Site](https://lokesh75-kank.github.io/CX_fulfillment_ML_System/)
+
 ## Overview
 
 When customer experience degrades (late orders, wrong items, substitutions, cancellations), the CX-Fulfillment Agent:
