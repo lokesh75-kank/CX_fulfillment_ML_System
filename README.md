@@ -2,11 +2,11 @@
 
 An agentic debugging + optimization workbench that detects CX degradation early, explains root causes, recommends fixes with quantified tradeoffs, and auto-generates experiment plans.
 
-## 🔗 Repository
+## 🔗 Links
 
-**GitHub**: [https://github.com/lokesh75-kank/CX_fulfillment_ML_System.git](https://github.com/lokesh75-kank/CX_fulfillment_ML_System.git)
+**🌐 Live Site**: [https://lokesh75-kank.github.io/CX_fulfillment_ML_System/](https://lokesh75-kank.github.io/CX_fulfillment_ML_System/)
 
-**🌐 Landing Page**: [View Live Site](https://lokesh75-kank.github.io/CX_fulfillment_ML_System/)
+**📦 GitHub Repository**: [https://github.com/lokesh75-kank/CX_fulfillment_ML_System](https://github.com/lokesh75-kank/CX_fulfillment_ML_System)
 
 ## Overview
 
