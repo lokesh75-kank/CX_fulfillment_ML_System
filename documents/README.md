@@ -70,6 +70,20 @@ Documents are organized into three categories:
 
 **Use this for**: Implementing data generators and understanding data structure
 
+#### 5. [ANOMALY_DETECTION_ALGORITHM.md](./technical/ANOMALY_DETECTION_ALGORITHM.md)
+**Anomaly detection algorithm documentation**
+
+- Z-score detection method (formulas, examples, parameters)
+- EWMA (Exponentially Weighted Moving Average) method
+- Bayesian change point detection
+- Combined consensus method
+- Severity calculation
+- Configuration parameters and tuning
+- Performance characteristics
+- Edge cases and handling
+
+**Use this for**: Understanding how incidents are automatically detected and flagged
+
 ---
 
 ### User Documents

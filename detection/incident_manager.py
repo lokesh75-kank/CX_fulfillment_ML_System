@@ -90,24 +90,96 @@ class IncidentManager:
     
     def _calculate_severity(self, delta: float, delta_percent: float,
                            metric_name: str) -> str:
-        """Calculate incident severity"""
+        """
+        Calculate incident severity
+        
+        Note: For improvements, severity is typically lower than regressions
+        because improvements are positive changes, though they still need investigation.
+        """
+        # Determine if this is a regression or improvement
+        is_regression = self._is_regression(metric_name, delta)
+        
         # For CX Score, use absolute delta
         if metric_name == 'cx_score':
-            if abs(delta) >= 15:
-                return 'HIGH'
-            elif abs(delta) >= 8:
-                return 'MEDIUM'
+            abs_delta = abs(delta)
+            if is_regression:
+                # Regressions: stricter thresholds
+                if abs_delta >= 15:
+                    return 'HIGH'
+                elif abs_delta >= 8:
+                    return 'MEDIUM'
+                else:
+                    return 'LOW'
             else:
-                return 'LOW'
+                # Improvements: more lenient thresholds (still significant but less urgent)
+                if abs_delta >= 20:
+                    return 'MEDIUM'  # Large improvements are interesting but not urgent
+                elif abs_delta >= 10:
+                    return 'LOW'
+                else:
+                    return 'LOW'
         
         # For rates (on-time, cancellation, etc.), use percentage change
         abs_delta_pct = abs(delta_percent)
-        if abs_delta_pct >= 20:
-            return 'HIGH'
-        elif abs_delta_pct >= 10:
-            return 'MEDIUM'
+        if is_regression:
+            # Regressions: stricter thresholds
+            if abs_delta_pct >= 20:
+                return 'HIGH'
+            elif abs_delta_pct >= 10:
+                return 'MEDIUM'
+            else:
+                return 'LOW'
         else:
-            return 'LOW'
+            # Improvements: more lenient thresholds
+            if abs_delta_pct >= 50:
+                return 'MEDIUM'  # Very large improvements are notable but not urgent
+            elif abs_delta_pct >= 25:
+                return 'LOW'
+            else:
+                return 'LOW'
+    
+    def _is_regression(self, metric_name: str, delta: float) -> bool:
+        """
+        Determine if a change is a regression (worse) or improvement (better)
+        
+        Args:
+            metric_name: Name of the metric
+            delta: Change value (current - baseline)
+            
+        Returns:
+            True if regression, False if improvement
+        """
+        # Metrics where higher is better
+        higher_is_better = [
+            'cx_score',
+            'on_time_rate',
+            'item_accuracy',
+            'on_time_score',
+            'item_accuracy_score',
+            'cancellation_score',
+            'refund_score',
+            'support_score',
+            'rating_score',
+            'rating_proxy'
+        ]
+        
+        # Metrics where lower is better
+        lower_is_better = [
+            'cancellation_rate',
+            'refund_rate',
+            'support_rate',
+            'eta_mean_absolute_error',
+            'eta_mean_error',
+            'eta_std_error'
+        ]
+        
+        if metric_name in higher_is_better:
+            return delta < 0  # Negative delta = regression
+        elif metric_name in lower_is_better:
+            return delta > 0  # Positive delta = regression
+        else:
+            # Unknown metric - use absolute magnitude
+            return abs(delta) > 0
     
     def get_incidents(self, status: Optional[str] = None,
                      severity: Optional[str] = None,

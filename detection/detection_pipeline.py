@@ -137,6 +137,11 @@ class DetectionPipeline:
                 top_n=5
             )
             
+            # Determine if this is a regression or improvement
+            description = self._generate_incident_description(
+                metric_name, baseline_value, current_value
+            )
+            
             # Create incident
             incident = self.incident_manager.create_incident(
                 metric_name=metric_name,
@@ -144,12 +149,76 @@ class DetectionPipeline:
                 baseline_value=baseline_value,
                 detected_at=datetime.now(),
                 top_regressing_slices=top_slices,
-                description=f"{metric_name} regressed from {baseline_value:.2f} to {current_value:.2f}"
+                description=description
             )
             
             incidents.append(incident)
         
         return incidents
+    
+    def _generate_incident_description(self, metric_name: str, 
+                                      baseline_value: float, 
+                                      current_value: float) -> str:
+        """
+        Generate incident description based on metric direction
+        
+        Args:
+            metric_name: Name of the metric
+            baseline_value: Baseline value
+            current_value: Current value
+            
+        Returns:
+            Description string (regressed/improved/changed)
+        """
+        delta = current_value - baseline_value
+        
+        # Metrics where higher is better
+        higher_is_better = [
+            'cx_score',
+            'on_time_rate',
+            'item_accuracy',
+            'on_time_score',
+            'item_accuracy_score',
+            'cancellation_score',  # Inverted: lower cancellation is better
+            'refund_score',  # Inverted: lower refund is better
+            'support_score',  # Inverted: lower support is better
+            'rating_score',
+            'rating_proxy'
+        ]
+        
+        # Metrics where lower is better
+        lower_is_better = [
+            'cancellation_rate',
+            'refund_rate',
+            'support_rate',
+            'eta_mean_absolute_error',
+            'eta_mean_error',
+            'eta_std_error'
+        ]
+        
+        # Determine direction
+        if metric_name in higher_is_better:
+            if current_value < baseline_value:
+                return f"{metric_name} regressed from {baseline_value:.2f} to {current_value:.2f}"
+            elif current_value > baseline_value:
+                return f"{metric_name} improved from {baseline_value:.2f} to {current_value:.2f}"
+            else:
+                return f"{metric_name} changed from {baseline_value:.2f} to {current_value:.2f}"
+        
+        elif metric_name in lower_is_better:
+            if current_value > baseline_value:
+                return f"{metric_name} regressed from {baseline_value:.2f} to {current_value:.2f}"
+            elif current_value < baseline_value:
+                return f"{metric_name} improved from {baseline_value:.2f} to {current_value:.2f}"
+            else:
+                return f"{metric_name} changed from {baseline_value:.2f} to {current_value:.2f}"
+        
+        else:
+            # Unknown metric - use absolute change
+            if abs(delta) > 0:
+                return f"{metric_name} changed from {baseline_value:.2f} to {current_value:.2f}"
+            else:
+                return f"{metric_name} remained at {baseline_value:.2f}"
     
     def get_active_incidents(self) -> List:
         """Get all active incidents"""
