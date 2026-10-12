@@ -2,6 +2,8 @@
 
 An agentic debugging + optimization workbench that detects CX degradation early, explains root causes, recommends fixes with quantified tradeoffs, and auto-generates experiment plans.
 
+> **Portfolio case study:** This independent project uses generated synthetic data only. It is not affiliated with, endorsed by, or built from the internal data or systems of any delivery marketplace.
+
 ## 🔗 Links
 
 **🌐 Live Site**: [https://lokesh75-kank.github.io/CX_fulfillment_ML_System/](https://lokesh75-kank.github.io/CX_fulfillment_ML_System/)
@@ -58,7 +60,7 @@ When customer experience degrades (late orders, wrong items, substitutions, canc
 ## Project Structure
 
 ```
-Doordash_CX_fullfilment_ML_system/
+CX_fulfillment_ML_System/
 ├── documents/          # Planning and design documents
 │   ├── planning/      # Project plans and checklists
 │   ├── technical/     # Architecture and data specs
@@ -103,6 +105,19 @@ uvicorn backend.api.main:app --reload
 
 # Start frontend (from frontend directory)
 npm run dev
+```
+
+### Validation
+
+```bash
+python scripts/test_generators.py
+python scripts/test_metrics.py
+python scripts/test_detection.py
+python scripts/test_rca.py
+python scripts/test_recommendations.py
+
+cd frontend
+npm run build
 ```
 
 ## Documentation
@@ -174,5 +189,4 @@ This is a portfolio project demonstrating ML system design, causal reasoning, an
 
 ---
 
-**Built with ❤️ for demonstrating ML system design and operational excellence**
-
+**Built to demonstrate ML system design and operational excellence**

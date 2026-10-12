@@ -29,7 +29,7 @@
 - Conceptual only - documented use cases
 - Future enhancements, not in MVP scope
 
-**Rationale**: Focus on depth for primary user (MLE) rather than breadth across many personas. This matches how DoorDash internal tools actually launch and demonstrates scope discipline.
+**Rationale**: Focus on depth for the primary user (MLE) rather than breadth across many personas. This matches how operational ML tools typically launch and demonstrates scope discipline.
 
 See [PERSONA_PLAN.md](../user/PERSONA_PLAN.md) for detailed persona specifications, workflows, and access patterns.
 
@@ -38,7 +38,7 @@ See [PERSONA_PLAN.md](../user/PERSONA_PLAN.md) for detailed persona specificatio
 ## Technical Architecture
 
 ### Stack Decision: **FastAPI + React/Next.js**
-- **Rationale**: Best look, professional, scalable, matches DoorDash tech stack
+- **Rationale**: Professional, scalable, and representative of a modern ML product stack
 - **Alternative considered**: Streamlit (faster but less polished)
 
 ### Component Architecture
@@ -485,7 +485,7 @@ CX Score = (
 ## File Structure
 
 ```
-Doordash_CX_fullfilment_ML_system/
+CX_fulfillment_ML_System/
 ├── documents/
 │   ├── PROJECT_PLAN.md (this file)
 │   └── DEMO_SCRIPT.md
@@ -570,7 +570,7 @@ Doordash_CX_fullfilment_ML_system/
 ### Credibility
 - [ ] Demo scenario feels realistic
 - [ ] Tradeoffs are clearly explained
-- [ ] Experiment plans match DoorDash standards
+- [ ] Experiment plans match production ML standards
 - [ ] README explains "why" not just "what"
 
 ---
@@ -608,6 +608,5 @@ Doordash_CX_fullfilment_ML_system/
 - Keep MVP simple but credible
 - Focus on "feels real" over "is perfect"
 - Prioritize demo scenario working flawlessly
-- README is critical for DoorDash credibility
+- README is critical for technical credibility
 - Tradeoffs explanation is the differentiator
-

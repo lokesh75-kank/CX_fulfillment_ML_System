@@ -293,7 +293,7 @@ Before demo, verify:
 - **Tradeoffs**: Acknowledges efficiency vs CX tension
 - **Real-world**: Matches how high-performing ML orgs operate
 
-### DoorDash-Specific Context
+### Delivery Marketplace Context
 - **Marketplace dynamics**: Efficiency vs customer trust
 - **Multi-sided platform**: Dashers, merchants, customers all matter
 - **Operational reality**: Oncall engineers need tools like this
@@ -342,4 +342,3 @@ Before demo, verify:
 - ✅ Shows tradeoffs clearly
 - ✅ Demonstrates operational value
 - ✅ Feels realistic and credible
-

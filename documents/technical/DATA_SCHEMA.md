@@ -2,7 +2,7 @@
 
 ## Overview
 
-This document defines the complete data model for the CX-Fulfillment Agent system. All tables are designed to support realistic DoorDash-style operations with temporal relationships and correlations.
+This document defines the complete data model for the CX-Fulfillment Agent system. All tables are designed to support realistic last-mile delivery operations with temporal relationships and correlations.
 
 ## Table Definitions
 
@@ -404,4 +404,3 @@ assert all(delivery['actual_eta'] >= order['order_time']
 assert all(0 <= prob <= 1 
            for prob in inventory_events['in_stock_prob'])
 ```
-

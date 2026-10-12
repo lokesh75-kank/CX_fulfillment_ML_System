@@ -382,7 +382,7 @@ Monthly leadership report:
 
 ## Why This Persona Strategy is Strong
 
-### 1. Matches How DoorDash Internal Tools Actually Launch
+### 1. Matches How Operational ML Tools Typically Launch
 - Start with one primary persona
 - Expand based on usage and feedback
 - Avoid over-engineering for users who don't exist yet
@@ -402,8 +402,8 @@ Monthly leadership report:
 - Show depth of features
 - Mention other personas as "future enhancements"
 
-### 5. Credible for DoorDash Interview
-- Shows understanding of internal tool development
+### 5. Credible as a Portfolio Case Study
+- Shows understanding of internal-tool development patterns
 - Demonstrates product thinking
 - Balances ambition with realism
 
@@ -530,4 +530,3 @@ Monthly leadership report:
 - **Others are documented**: Shows product thinking without scope creep
 - **Future is clear**: Easy to extend to other personas later
 - **Demo stays focused**: One primary persona, one compelling story
-

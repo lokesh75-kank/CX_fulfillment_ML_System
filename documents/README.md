@@ -187,7 +187,7 @@ Build an agentic debugging + optimization workbench that:
 ### Presentation
 - ✅ Demo scenario feels realistic
 - ✅ Tradeoffs are clearly explained
-- ✅ Experiment plans match DoorDash standards
+- ✅ Experiment plans match production ML standards
 - ✅ README explains "why" not just "what"
 
 ---

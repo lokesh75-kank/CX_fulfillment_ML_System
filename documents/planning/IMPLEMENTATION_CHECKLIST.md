@@ -540,6 +540,5 @@ Use these questions each day to track progress:
 - **Focus on MVP first**: Get core functionality working before polish
 - **Test as you go**: Don't wait until the end to test
 - **Demo scenario is critical**: Make sure it works perfectly
-- **README matters**: This is what DoorDash will see first
+- **README matters**: This is what reviewers will see first
 - **Tradeoffs are key**: This is the differentiator
-

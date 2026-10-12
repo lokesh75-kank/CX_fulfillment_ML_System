@@ -200,7 +200,7 @@ GET  /api/metrics/cohorts
 
 ### Synthetic Data Generator
 
-**Purpose**: Create realistic dataset without DoorDash data
+**Purpose**: Create a realistic dataset without proprietary marketplace data
 
 **Key Features**:
 - Temporal relationships (orders → deliveries → items)
@@ -344,4 +344,3 @@ GET  /api/metrics/cohorts
 - Well-documented
 - Good interpretability
 - Widely used in industry
-
